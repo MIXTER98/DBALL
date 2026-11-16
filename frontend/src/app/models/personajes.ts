@@ -1,5 +1,5 @@
 export interface Personajes {
-    id: number;
+    id?: number;
     nombre:string;
     raza: string;
     poder: number;

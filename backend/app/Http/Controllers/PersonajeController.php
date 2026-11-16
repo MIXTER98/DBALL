@@ -31,16 +31,16 @@ class PersonajeController extends Controller
         $request->validate([
             'nombre' => 'required|max:100',
             'raza' => 'required|max:100',
-            'poder'=>'required|min:0',
+            'poder'=>'required|numeric|min:0',
             'transformacion'=>'required|max:100',
-            'imglink'=>'required'
+            'imgsrc'=>'required'
         ]);
         $personaje = Personaje::create([
             'nombre' => $request->nombre,
             'raza' => $request->raza,
             'poder'=>$request->poder,
             'transformacion'=>$request->transformacion,
-            'imglink'=>$request->imgsrc
+            'imgsrc'=>$request->imgsrc
         ]);
 
         return  response()-> json($personaje);

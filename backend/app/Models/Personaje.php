@@ -11,6 +11,6 @@ class Personaje extends Model
         'raza',
         'poder', 
         'transformacion',
-        'img_src'
+        'imgsrc'
     ];
 }
