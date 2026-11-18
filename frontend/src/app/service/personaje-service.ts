@@ -20,7 +20,7 @@ export class PersonajeService {
     }
 
     obtener(nombre: string){
-        return this.http.get(this.apiUrl+`${nombre}`)
+        return this.http.get<Personajes>(this.apiUrl+`/${nombre}`)
     }
 
     crear(personaje: Personajes){
@@ -30,11 +30,13 @@ export class PersonajeService {
             })
         );
     }
-    editar(){
+    editar(nombre:string, personaje:Personajes){
+        return this.http.put<Personajes>(this.apiCreate+`/${nombre}`, personaje)
 
     }
 
-    eliminar(){
+    eliminar(nombre:string){
+        return this.http.delete(this.apiUrl+`/${nombre}`)
 
     }
 

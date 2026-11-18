@@ -49,14 +49,15 @@ class PersonajeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Personaje $personaje)
+    public function show(string $nombre)
     {
-        return response()->json([
-            'id'=>$personaje->id,
-            'nombre'=>$personaje->nombre,
-            'imgUrl'=>asset('storage/'. $personaje-> imgsrc)
-        ]
-        );
+        $personaje = Personaje::where(
+            'nombre',
+            $nombre
+        )->firstOrFail();
+
+        return response() -> json($personaje);
+        
     }
 
     /**
@@ -70,9 +71,12 @@ class PersonajeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $nombre)
     {   
-        $personaje = Personaje::findOrFail($id);
+        $personaje = Personaje::where(
+            'nombre',
+            $nombre
+        )->firstOrFail();
 
         $personaje->update([
             'nombre'=>$request->nombre,
@@ -88,9 +92,12 @@ class PersonajeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $nombre)
     {
-        $personaje = Personaje::findOrFail($id);
+        $personaje = Personaje::where(
+            'nombre',
+            $nombre
+        )->firstOrFail();
         $personaje->delete();
         return response()->json([
             'mensaje'=> 'Eliminado correctamente'
