@@ -20,31 +20,7 @@
             <p class="text-sm text-slate-300">
                 {{a.raza}}
             </p>
-            <div class="mt-3">
-                <div class="flex justify-between mb-1">
-                    <span class="text-xs">
-                        POWER LEVEL
-                    </span>
-                    <span class="text-cyan-300">
-                        {{a.poder}}
-                    </span>
-                </div>
-                <div class="
-                    h-2
-                    bg-slate-700
-                    rounded-full
-                    ">
-                    <div class="
-                        h-2
-                        w-[90%]
-                        rounded-full
-                        bg-gradient-to-r
-                        from-cyan-400
-                        to-purple-500
-                        ">
-                    </div>
-                </div>
-            </div>
+            <app-power-level-card [poder]="a.poder"></app-power-level-card>
             <p class="mt-4 text-sm">
                 {{a.transformacion}}
             </p>

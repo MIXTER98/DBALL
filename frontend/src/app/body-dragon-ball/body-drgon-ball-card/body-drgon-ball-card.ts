@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output} from '@angular/core';
 import { Personajes } from '../../models/personajes';
 import { CommonModule } from '@angular/common';
+import { PowerLevelCard } from './power-level-card/power-level-card';
 
 @Component({
-  imports: [CommonModule],
+  imports: [CommonModule, PowerLevelCard],
   standalone: true,
   selector: 'app-body-drgon-ball-card',
   styleUrl: './body-drgon-ball-card.css',
