@@ -7,7 +7,6 @@ import { PowerLevelCard } from './power-level-card/power-level-card';
   imports: [CommonModule, PowerLevelCard],
   standalone: true,
   selector: 'app-body-drgon-ball-card',
-  styleUrl: './body-drgon-ball-card.css',
   templateUrl: './body-drgon-ball-card.html',
 })
 export class BodyDrgonBallCard {

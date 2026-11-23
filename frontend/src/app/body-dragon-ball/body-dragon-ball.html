@@ -32,17 +32,23 @@
                 ">
 
             <button (click)="busqueda(buscar)" class="
-                bg-cyan-500
-                text-slate-950
-                font-bold
-                px-5
-                rounded-xl
-                hover:bg-cyan-400
-                transition
-                ">
-                BUSCAR
-            </button>
-
+            bg-cyan-500
+            text-slate-950
+            font-bold
+            px-5
+            rounded-xl
+            hover:bg-cyan-400
+            transition
+            ">
+            BUSCAR
+        </button>
+        
+        @if (errorBusqueda()) {
+        <p role="alert" class="p-2 bg-red-100 rounded-xl items-center  mt-1.5 text-xl text-rose-400">{{errorBusqueda()}}</p>
+        }
+        @else {
+            <p></p>
+        }
         </div>
 
 
@@ -203,8 +209,7 @@
                 <input type="number" [(ngModel)]="poder" [value]="personajeSeleccionado?.poder" class=" w-full bg-slate-800 border
                     border-cyan-500 rounded-lg p-3 ">
                 <input type="file" (change)="onFileSelected($event)" class=" w-full text-cyan-300 ">
-                <button (click)="cerrarModalActualizar()"
-                    class=" px-5 py-2 bg-red-600 rounded-lg m-2">
+                <button (click)="cerrarModalActualizar()" class=" px-5 py-2 bg-red-600 rounded-lg m-2">
                     CANCELAR
                 </button>
                 <button class="px-5 py-2 bg-cyan-500 text-slate-950 font-bold rounded-lg
@@ -215,7 +220,7 @@
         </div>
     </dialog>
 </div>
-<app-body-drgon-ball-card [personajes]="personajes()" 
-                            (editarPersonje)="seleccionarPersonaje($event)" 
-                            (eliminarPersonaje)="eliminarPersonaje($event)">
+
+<app-body-drgon-ball-card [personajes]="personajes()" (editarPersonje)="seleccionarPersonaje($event)"
+    (eliminarPersonaje)="eliminarPersonaje($event)">
 </app-body-drgon-ball-card>

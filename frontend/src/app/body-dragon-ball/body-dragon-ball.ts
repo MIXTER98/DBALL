@@ -11,7 +11,6 @@ import { Observable, single } from 'rxjs';
   imports: [BodyDrgonBallCard, FormsModule, CommonModule],
   standalone: true,
   selector: 'app-body-dragon-ball',
-  styleUrl: './body-dragon-ball.css',
   templateUrl: './body-dragon-ball.html',
 })
 export class BodyDragonBall implements OnInit {
@@ -19,7 +18,7 @@ export class BodyDragonBall implements OnInit {
   private personajeService = inject(PersonajeService);
 
   personajes = signal<Personajes[]>([])
-
+  errorBusqueda = signal<string | null>(null); 
   id?: number = 0
   nombre: string = ""
   raza: string = ""
@@ -44,7 +43,9 @@ export class BodyDragonBall implements OnInit {
   cargarLista() {
     return this.personajeService.listar().subscribe({
       next: (resp: any) => this.personajes.set(resp),
-      error: (err) => console.error(err)
+      error: (err) => {console.error(err)
+        alert('Paso algo cargar los datos')
+      }
     })
   }
 
@@ -91,14 +92,17 @@ export class BodyDragonBall implements OnInit {
     if (!buscar.trim()) {
       console.log('Busqueda vacia')
       this.cargarLista()
+      this.errorBusqueda.set("")
       return;
     }
     return this.personajeService.obtener(buscar).subscribe({
       next: (respuesta) => {
         this.personajes.set([respuesta]);
+        this.errorBusqueda.set("")
       },
       error: (err) => {
         console.error(err);
+        this.errorBusqueda.set(`Personaje no agregado a la baraja`);
       }
     });
   }
